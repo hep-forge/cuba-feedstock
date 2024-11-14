@@ -3,5 +3,5 @@
 export CFLAGS="-fPIC -fcommon"
 ./configure --prefix=$PREFIX
 
-make -j$(nproc)
+make
 make install
