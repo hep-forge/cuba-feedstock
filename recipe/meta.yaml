@@ -1,0 +1,39 @@
+{% set versions = {
+    "4.2.2": "8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52"
+} %}
+
+
+{% set version = environ.get('COMMIT_VERSION', None) %}
+{% set version = version or versions.keys()|first %}
+{% set version = version|string %}
+
+package:
+  name: {{ environ.get('ANACONDA_PACKAGE', "cuba")|string|lower }}
+  version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
+
+source:
+  url: "https://feynarts.de/cuba/Cuba-{{ version }}.tar.gz"
+  {% if versions.get(version, None) %}
+  sha256: {{ versions.get(version) }}
+  {% endif %}
+  patches:
+    - patches/parallel.patch
+
+requirements:
+  build:
+    - {{ compiler('gfortran') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+
+    - make
+
+about:
+  home: "https://feynarts.de/cuba"
+  license: "GPL-3.0"
+  summary: "Cuba – a library for multidimensional numerical integration"
+  description: |
+    The Cuba library offers a choice of four independent routines for multidimensional numerical integration: Vegas, Suave, Divonne, and Cuhre.
+
+extra:
+  recipe-maintainers:
+    - meiyasan

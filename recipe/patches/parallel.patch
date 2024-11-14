@@ -1,0 +1,25 @@
+From b57b1dda4e743ab868e608b194231665e7514134 Mon Sep 17 00:00:00 2001
+From: Marco Meyer-Conde <marco@tcu.ac.jp>
+Date: Thu, 14 Nov 2024 09:43:21 +0900
+Subject: [PATCH] parallel
+
+---
+ src/common/Parallel.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/common/Parallel.c b/src/common/Parallel.c
+index 895862f..75bba18 100644
+--- a/src/common/Parallel.c
++++ b/src/common/Parallel.c
+@@ -8,7 +8,7 @@
+ 
+ #include "sock.h"
+ 
+-#define MINSLICE 10
++#define MINSLICE 1
+ #define MINCORES 1
+ /*#define MINCORES 2*/
+ 
+-- 
+2.47.0
+
