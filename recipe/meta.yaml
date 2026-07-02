@@ -26,6 +26,7 @@ requirements:
     - {{ compiler('c') }}
 
     - make
+    - gnuconfig
 
 about:
   home: "https://feynarts.de/cuba"
